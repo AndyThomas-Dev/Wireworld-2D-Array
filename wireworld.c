@@ -37,6 +37,8 @@ bool coppercheck(int i);
 
 bool headcheck(int i);
 
+bool getfile(FILE *ifp, int argc);
+
 /* Function amends input char 'H' to 't' and 't' to 'c' 
 or if not H or t, returns null */
 char charflip(char c);
@@ -67,15 +69,9 @@ int main(int argc, char **argv)
 
    testing();
   
-  /* File opening and checking */
-   if(filecheck(argc)){
-      ifp = fopen(argv[1], "r");
-      }
-
-   if(ifp == NULL){
-      fprintf(stderr, "Failed to open a file. \n");
-      exit(1);
-      }
+   /* File opening and checking */
+   ifp = fopen(argv[1], "r");
+   if(getfile(ifp, argc) == False){ exit(1); }
 
    fseek(ifp, 0L, SEEK_END);
    filesize = ftell(ifp);
@@ -116,6 +112,19 @@ int main(int argc, char **argv)
    }
 
 /* ¬¬ FUNCTIONS BELOW THIS POINT ¬¬ */
+bool getfile(FILE *ifp, int argc){
+
+   if(filecheck(argc)){
+      return True;
+      }
+
+   if(ifp == NULL){
+      fprintf(stderr, "Failed to open a file. \n");
+      return False;
+      }
+
+   return False;
+}
 
 /* Prevents user inputting more than one filename */
 int filecheck(int argc){
@@ -193,6 +202,7 @@ bool boundarycheck(int length, int width){
 
    }
 
+/* Helper function - just copies array */
 void copyarray(char array[SIZE][SIZE], char temparray[SIZE][SIZE]){
 
    int rows, columns;
@@ -268,6 +278,7 @@ void colourscheme(NCURS_Simplewin *sw){
    Neill_NCURS_CharStyle(sw, "t", COLOR_RED, COLOR_RED, A_BOLD);
 
    }
+
 
 void testing(void){
 
