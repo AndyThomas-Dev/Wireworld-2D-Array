@@ -7,3 +7,6 @@
 gcc wireworld.c neillncurses.c -Wall -Wfloat-equal -Wextra -O2 -pedantic -ansi -lncurses -lm
 
 ./a.out wirewcircuit1.txt
+
+![alt text](./Images/1.png "Logo Title Text 1")
+
