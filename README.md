@@ -7,5 +7,8 @@
 gcc wireworld.c neillncurses.c -Wall -Wfloat-equal -Wextra -O2 -pedantic -ansi -lncurses -lm
 
 ./a.out wirewcircuit1.txt
-![alt text](./Images/1.png "Logo Title Text 1")
+
+Below is an example of what the program should output for the wirewcircuit1.txt (though the actual output should be animated).
+
+![alt text](./Images/1.png "Example Image")
 
