@@ -2,7 +2,14 @@
 
 **Important note: This program requires the Ncurses library in order to display the graphics.**
 
-[Wireworld](https://en.wikipedia.org/wiki/Wireworld) is a [cellular automaton](https://en.wikipedia.org/wiki/Cellular_automaton)
+[Wireworld](https://en.wikipedia.org/wiki/Wireworld) is a [cellular automaton](https://en.wikipedia.org/wiki/Cellular_automaton) first proposed by Brian Silverman in 1987.
+
+A Wireworld cell can be in one of four different states, usually numbered 0–3 in software, modeled by colors in the examples here: 
+
+0. empty (black)
+1. electron head (blue)
+2. electron tail (red)
+3. conductor (yellow)
 
 ### Compilation
 
