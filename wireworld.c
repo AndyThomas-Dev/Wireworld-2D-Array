@@ -61,7 +61,6 @@ int main(int argc, char **argv)
 {
 
    char a[SIZE][SIZE];
-
    long int filesize;
    int invalidflag = 0;
 
@@ -70,10 +69,9 @@ int main(int argc, char **argv)
 
    testing();
   
-   /* File opening and checking */
+   /* File opening and checking functions */
    ifp = fopen(argv[1], "r");
    if(getfile(ifp, argc) == False){ exit(1); }
-
    fseek(ifp, 0L, SEEK_END);
    filesize = ftell(ifp);
    rewind(ifp);
@@ -84,6 +82,7 @@ int main(int argc, char **argv)
    populatearray(a, ifp, invalidflag);
    invalidmsg(invalidflag);
    fclose(ifp);
+
    Neill_NCURS_Init(&sw);
    colourscheme(&sw);
 
@@ -100,7 +99,9 @@ int main(int argc, char **argv)
 
    }
 
+/* ¬¬ FUNCTIONS BELOW THIS POINT ¬¬ */
 
+/* Populates a 2D array with contents from the file */
 void populatearray(char a[SIZE][SIZE], FILE *ifp, int invalidflag){
 
    char c; int rows, columns;
@@ -119,7 +120,7 @@ void populatearray(char a[SIZE][SIZE], FILE *ifp, int invalidflag){
       }
 }
 
-/* ¬¬ FUNCTIONS BELOW THIS POINT ¬¬ */
+
 bool getfile(FILE *ifp, int argc){
 
    if(filecheck(argc)){
