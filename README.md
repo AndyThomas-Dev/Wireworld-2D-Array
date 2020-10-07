@@ -1,6 +1,10 @@
 ## Wireworld
 
-**Important note: This requires the Ncurses library in order to display the graphics.**
+**Important note: This program requires the Ncurses library in order to display the graphics.**
+
+[Wireworld](https://en.wikipedia.org/wiki/Wireworld) is a [cellular automaton](https://en.wikipedia.org/wiki/Cellular_automaton)
+
+### Compilation
 
 In Linux, installing the Ncurses library can be done via: 
 
