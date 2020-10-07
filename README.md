@@ -11,6 +11,13 @@ A Wireworld cell can be in one of four different states, usually numbered 0–3 
 2. electron tail (red)
 3. conductor (yellow)
 
+The input text file sets the initial state of the automata. Cells are represented by the following characters.
+
+0. empty (blank space)
+1. electron head ('H')
+2. electron tail ('t')
+3. conductor ('c')
+
 As in all cellular automata, time proceeds in discrete steps called generations (sometimes "gens" or "ticks"). Cells behave as follows:
 
 * empty → empty,
