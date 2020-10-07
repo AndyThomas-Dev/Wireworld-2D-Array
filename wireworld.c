@@ -55,14 +55,15 @@ void invalidmsg(int invalidflag);
 
 void colourscheme(NCURS_Simplewin *sw);
 
+void populatearray(char a[SIZE][SIZE], FILE *ifp, int invalidflag);
+
 int main(int argc, char **argv)
 {
 
    char a[SIZE][SIZE];
-   int rows, columns;
+
    long int filesize;
    int invalidflag = 0;
-   char c;
 
    FILE *ifp = NULL; 
    NCURS_Simplewin sw;
@@ -80,19 +81,7 @@ int main(int argc, char **argv)
 
    /* Populates 2d array with characters from file */
    /* Removes any invalid chars and replaces them with blanks */
-   for(rows = 0; rows < SIZE; rows++){
-      for(columns = 0; columns < SIZE; columns++){
-         if(((c = getc(ifp)) != '\n') || ((c = getc(ifp)) != '\0')){
-            a[rows][columns] = c;
-            } 
-
-         if(validcharcheck(c) == False && c != '\0' && c != '\n'){
-            a[rows][columns] = ' ';
-            invalidflag++;
-            }
-         }
-      }
-
+   populatearray(a, ifp, invalidflag);
    invalidmsg(invalidflag);
    fclose(ifp);
    Neill_NCURS_Init(&sw);
@@ -110,6 +99,25 @@ int main(int argc, char **argv)
    exit(EXIT_SUCCESS);
 
    }
+
+
+void populatearray(char a[SIZE][SIZE], FILE *ifp, int invalidflag){
+
+   char c; int rows, columns;
+
+   for(rows = 0; rows < SIZE; rows++){
+      for(columns = 0; columns < SIZE; columns++){
+         if(((c = getc(ifp)) != '\n') || ((c = getc(ifp)) != '\0')){
+            a[rows][columns] = c;
+            } 
+
+         if(validcharcheck(c) == False && c != '\0' && c != '\n'){
+            a[rows][columns] = ' ';
+            invalidflag++;
+            }
+         }
+      }
+}
 
 /* ¬¬ FUNCTIONS BELOW THIS POINT ¬¬ */
 bool getfile(FILE *ifp, int argc){
